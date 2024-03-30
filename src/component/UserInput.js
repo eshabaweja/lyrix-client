@@ -2,26 +2,33 @@ import React, { useState, useEffect } from 'react';
 import '../.env';
 
 const UserInput = ({ }) => {
-    const [trackId, setTrackId] = useState("")
+    const [formData, setFormData] = useState({
+        trackId: '',
+    });
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        // submitToApi(formData)
-        console.log("button dabaya re")
-        console.log(event.target.value)
-    }
-    
-    
+    const handleChange = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        // Access form data from state
+        const { trackId, } = formData;
+        console.log('Submitted data:', trackId)
+    };
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="trackId"
                 placeholder="Spotify Track ID"
+                autoComplete='off'
+                onChange={handleChange}
             />
             <button type='submit'>Submit</button>
         </form>
     );
 };
 
-export default UserInput
+export default UserInput;
