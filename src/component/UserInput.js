@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../.env';
 
 const UserInput = ({ }) => {
     const [formData, setFormData] = useState({
@@ -17,13 +16,14 @@ const UserInput = ({ }) => {
         const { trackId, } = formData;
         console.log('Submitted data:', trackId)
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="trackId"
                 placeholder="Spotify Track ID"
-                autoComplete='off'
+                autoComplete="off"
                 onChange={handleChange}
             />
             <button type='submit'>Submit</button>
